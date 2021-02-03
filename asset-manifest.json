@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/hrbackend/static/css/main.bc624af8.chunk.css",
+    "main.js": "/hrbackend/static/js/main.cb5d6340.chunk.js",
+    "main.js.map": "/hrbackend/static/js/main.cb5d6340.chunk.js.map",
+    "runtime-main.js": "/hrbackend/static/js/runtime-main.ea7f09d3.js",
+    "runtime-main.js.map": "/hrbackend/static/js/runtime-main.ea7f09d3.js.map",
+    "static/js/2.6fc2f3b2.chunk.js": "/hrbackend/static/js/2.6fc2f3b2.chunk.js",
+    "static/js/2.6fc2f3b2.chunk.js.map": "/hrbackend/static/js/2.6fc2f3b2.chunk.js.map",
+    "index.html": "/hrbackend/index.html",
+    "static/css/main.bc624af8.chunk.css.map": "/hrbackend/static/css/main.bc624af8.chunk.css.map",
+    "static/js/2.6fc2f3b2.chunk.js.LICENSE.txt": "/hrbackend/static/js/2.6fc2f3b2.chunk.js.LICENSE.txt",
+    "static/media/Signin.css": "/hrbackend/static/media/banner.795c3a71.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea7f09d3.js",
+    "static/js/2.6fc2f3b2.chunk.js",
+    "static/css/main.bc624af8.chunk.css",
+    "static/js/main.cb5d6340.chunk.js"
+  ]
+}
