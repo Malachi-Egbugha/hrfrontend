@@ -1,5 +1,5 @@
 
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Layouttwo from '../Layout/Layouttwo';
 import {signup} from '../Apicalls/apicore';
 
@@ -13,12 +13,10 @@ const Addemployee =()=>{
         staffregnumber: '',
         employeetype: '',
         employeegrade: '',
-        employeegroup: '',
         designation: '',
         branch: '',
         phone: '',
         department:'',
-        username: '',
         password: '',
         error: '',
         loading: false
@@ -32,12 +30,10 @@ const Addemployee =()=>{
         staffregnumber,
         employeetype,
         employeegrade,
-        employeegroup,
         designation,
         branch,
         phone,
         department,
-        username,
         password,
         error,
         loading
@@ -68,12 +64,10 @@ const Addemployee =()=>{
                     staffregnumber: '',
                     employeetype: '',
                     employeegrade: '',
-                    employeegroup: '',
                     designation: '',
                     branch: '',
                     phone: '',
                     department:'',
-                    username: '',
                     password: '',
                     error: '',
                     loading: false
@@ -131,11 +125,9 @@ const Addemployee =()=>{
                         <label for="stafftype">Staff Type:</label>
                             <select onChange={handleChange('employeetype')}  class="form-control" id="stafftype" required>
                                 <option>Please Select</option>
-                                <option>Type 1</option>
-                                <option>Type 2</option>
-                                <option>Type 3</option>
-                                <option>Type 4</option>
-                                <option>Type 5</option>
+                                <option value="Permanent">Permanent</option>
+                                <option value="Casual">Casual</option>
+                                
                             </select>
                         </div>
                   </div>
@@ -144,38 +136,18 @@ const Addemployee =()=>{
                         <label for="employeegrade">Employee Grade:</label>
                             <select onChange={handleChange('employeegrade')} class="form-control" id="employeegrade" required>
                             <option>Please Select</option>
-                                <option>Grade 1</option>
-                                <option>Grade 2</option>
-                                <option>Grade 3</option>
-                                <option>Grade 4</option>
-                                <option>Grade 5</option>
-                            </select>
-                        </div>
-                  </div>
-                  <div className="input-field col-sm-6 col-lg-4">
-                        <div className="form-group">
-                        <label for="employeegroup">Employee Group:</label>
-                            <select  onChange={handleChange('employeegroup')} class="form-control" id="employeegroup" required>
-                                <option>Please Select</option>
-                                <option>Group 1</option>
-                                <option>Group 2</option>
-                                <option>Group 3</option>
-                                <option>Grade 4</option>
-                                <option>Group 5</option>
+                                <option value="Grade 1">Grade 1</option>
+                                <option value="Grade 2">Grade 2</option>
+                                <option value="Grade 3">Grade 3</option>
+                                <option value="Grade 4">Grade 4</option>
+                                <option value="Grade 5">Grade 5</option>
                             </select>
                         </div>
                   </div>
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
                         <label for="designation">Designation:</label>
-                            <select onChange={handleChange('designation')} class="form-control" id="designation" required>
-                                <option>Please Select</option>
-                                <option>hr</option>
-                                <option>Designation 2</option>
-                                <option>Designation 3</option>
-                                <option>Designation 4</option>
-                                <option>Designation 5</option>
-                            </select>
+                            <input onChange={handleChange('designation')} value={designation} type="text" className="form-control" id="designation" aria-describedby="emailHelp" placeholder="Enter Designation" required/>
                         </div>
                   </div>
                   <div className="input-field col-sm-6 col-lg-4">
@@ -183,11 +155,9 @@ const Addemployee =()=>{
                         <label for="branch">Branch:</label>
                             <select onChange={handleChange('branch')} class="form-control" id="branch" required>
                                 <option>Please Select</option>
-                                <option>Branch 1</option>
-                                <option>Branch 2</option>
-                                <option>Branch 3</option>
-                                <option>Branch 4</option>
-                                <option>Branch 5</option>
+                                <option value="Ademola">Ademola Adetokubo</option>
+                                <option value="Ajesa">Ajesa</option>
+                                
                             </select>
                         </div>
                   </div>
@@ -202,22 +172,22 @@ const Addemployee =()=>{
                         <div className="form-group">
                         <label for="department">Department:</label>
                             <select onChange={handleChange('department')} class="form-control" id="department" required>
-                                <option>Please Select</option>
-                                <option>Department 1</option>
-                                <option>Department 2</option>
-                                <option>Department 3</option>
-                                <option>Department 4</option>
-                                <option>Department 5</option>
+                            <option>Please Select</option>
+                                <option value="admin">Admin</option>
+                                <option value="credit">Credit</option>
+                                <option value="finance">Dev Finance</option>
+                                <option value="hr">Hr</option>
+                                <option value="ict">ICT</option>
+                                <option value="internal control">Internal Control</option>
+                                <option value="loan monitoring">Loan Monitoring</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="payroll">Payroll</option>
+                                <option value="operations">Operations</option>
+                                <option value="recovery">Recovery</option>
                             </select>
                         </div>
                   </div>
-                  <div className="input-field col-sm-6 col-lg-4">
-                        <div className="form-group">
-                            <label for="username">User Name:</label>
-                            <input onChange={handleChange('username')} value={username} type="text" className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter First Name" required/>
-                            
-                        </div>
-                  </div>
+                 
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
                             <label for="password">Password:</label>

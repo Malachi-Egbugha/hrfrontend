@@ -6,10 +6,19 @@ import {isActive} from '../auth';
 
 
  const Navbar1=({history})=>{
+
+     const toggleSidebar = async () =>
+    {
+        //define central store nd access redux
+        var sidebar = document.getElementById("sidebar");
+        sidebar.classList.add("sidebar_responsive");
+
+    
+    }
    
     return(
     <nav className="navbar">
-    <div className="nav_icon">
+    <div className="nav_icon" onClick={toggleSidebar}>
         <i className="fa fa-bars"></i>
     </div>
     <div className="navbar__left">
