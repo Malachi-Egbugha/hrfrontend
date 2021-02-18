@@ -1,5 +1,5 @@
 
-import {GENERALAPI,CLOUDAPI, USERAPI} from "./config";
+import {GENERALAPI,CLOUDAPI, USERAPI, LEAVEAPI} from "./config";
 export const signup =async (user) =>{
 
 try{
@@ -80,3 +80,14 @@ export const signout = (next) =>{
     catch(err) {console.log(err)}
 };
   
+export const getLeaves =async (page) => {
+    try{
+    let fetleaves = await fetch(`${LEAVEAPI}/allleaves?page=${page}`, {
+        method: "GET"
+    });
+    return fetleaves.json()
+    }
+    catch(err) {console.log(err)}
+};
+
+

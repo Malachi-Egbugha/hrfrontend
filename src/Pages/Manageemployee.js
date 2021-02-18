@@ -40,7 +40,6 @@ return(
                         <tr>
                         <th scope="col"></th>
                         <th></th>
-                        <th></th>
                         <th scope="col">Firstname</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">StaffReg</th>
@@ -61,9 +60,8 @@ return(
                {
                    displayUsers.map((u,i)=>(
                     <tr>
-                    <td>{i + 1}</td>
-                    <td><button type="button" className="btn btn-danger">Danger</button></td>
-                    <td><button type="button" className="btn btn-success">Success</button></td>
+                    <td>{i + 1}</td>         
+                    <td><button type="button" className={u.status == 'active' ? 'btn btn-success' : 'btn btn-danger'}>{u.status == 'active' ? 'Deactivate' : 'Activate'}</button></td>
                     <td>{u.firstname}</td>
                     <td>{u.lastname}</td>
                     <td>{u.staffregnumber}</td>

@@ -52,6 +52,21 @@ return(
     <i className="fa fa-handshake-o"></i>
     <Link to="/addemployee">Add Employee</Link>
 </div>
+<h2>LEAVES</h2>
+<div className={isActive(history, '/leaveapplications')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+    <i className="fa fa-money"></i>
+    <Link to="leaveapplications">Leave Applications</Link>
+    </div>
+    <div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+    <i className="fa fa-money"></i>
+    <Link to="#">Leave Allocation</Link>
+    </div>
+    <div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+    <i className="fa fa-money"></i>
+<Link to="#">Leave Report</Link>
+
+    
+</div>
 
 <h2>ATTENDANCE</h2>
 <div className={isActive(history, '/notice')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
@@ -59,11 +74,7 @@ return(
     <Link to="/notice">Check Notice board</Link>
 </div>
 
-<h2>LEAVES</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
+
 <h2>PAYROLL</h2>
 <div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
