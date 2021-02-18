@@ -1,3 +1,4 @@
+
 import {GENERALAPI,CLOUDAPI, USERAPI} from "./config";
 export const signup =async (user) =>{
 
@@ -51,3 +52,31 @@ export const signin =async (user) =>{
     });
 
 };
+//signout
+export const signout = (next) =>{
+ 
+    if(typeof window !== 'undefined'){
+        localStorage.removeItem("usersign");
+        return fetch(`${GENERALAPI}/signout`,{
+            method: "GET"
+        })
+        .then(response => {
+            console.log('signout', response)
+            
+            
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  //statistics
+  export const stats =async () => {
+    try{
+    let fetstats = await fetch(`${USERAPI}/stats`, {
+        method: "GET"
+    });
+    return fetstats.json()
+    }
+    catch(err) {console.log(err)}
+};
+  

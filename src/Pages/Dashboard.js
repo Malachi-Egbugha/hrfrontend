@@ -1,8 +1,27 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
+import {stats} from '../Apicalls/apicore';
 import Layouttwo from '../Layout/Layouttwo';
 
 
-const Dashboard =()=>(
+const Dashboard =()=>{
+    const [values, setvalues] = useState({
+        active : 'po',
+        deactive: '',
+        total: ''
+    });
+    const {active, deactive, total} = values;
+    const loadDsiplayStats = async () =>{
+        let getstats =await stats();
+        const {totalActive, totalDeactive, totalUsers}= getstats;
+        setvalues({...values, active: totalActive, deactive: totalDeactive, total: totalUsers})
+        console.log(getstats);
+    }
+   
+    useEffect(()=>{
+        loadDsiplayStats();
+    },[])
+    return(
+    
     <Layouttwo>
         
         <div class="main__container">
@@ -15,18 +34,12 @@ const Dashboard =()=>(
                 </div>
 
                 <hr class="main__cards"/>
-                
-                    
-
-          
-
-
             <div class="charts">
                 <div class="charts__left">
                     <div class="charts__left__title">
                     <div>
-                        <h1>Daily Reports</h1>
-                        <p>Cupertino, califonia, USA</p>
+                        <h1>Reports</h1>
+                       
                     </div>
                     <i class="fa fa-usd"></i>
                 </div>
@@ -36,29 +49,28 @@ const Dashboard =()=>(
                     <div class="charts__right__title">
                         <div>
                             <h1>Stats Reports</h1>
-                            <p>Cupertino, califonia, USA</p>
                         </div>
                         <i class="fa fa-usd"></i>
                     </div>
                     <div class="charts__right__cards">
                         <div class="card1">
-                            <h1>Income</h1>
-                            <p>$75,300</p>
+                            <h1>Deactivated Users</h1>
+                            <p>{deactive}</p>
                         </div>
 
                         <div class="card2">
-                            <h1>Sales</h1>
-                            <p>$124,000</p>
+                            <h1>Active Users</h1>
+                            <p>{active}</p>
                         </div>
 
                         <div class="card3">
                             <h1>Users</h1>
-                            <p>$39000</p>
+                            <p>{total}</p>
                         </div>
 
                         <div class="card4">
-                            <h1>Orders</h1>
-                            <p>$1881</p>
+                            <h1>Applicants</h1>
+                            <p>0</p>
                         </div>
                     </div>
                 </div>
@@ -69,6 +81,7 @@ const Dashboard =()=>(
     
         
     </Layouttwo>
+    )
 
-)
+}
 export default Dashboard;

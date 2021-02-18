@@ -1,6 +1,8 @@
+import {Redirect} from 'react-router-dom';
 import Layout from "../Layout/Layout";
 import React,{useState} from "react";
 import {signin} from '../Apicalls/apicore';
+import {authenticate} from '../auth';
 import './Signin.css';
 
 
@@ -13,7 +15,7 @@ const Signin = () => {
         redirectToReferrer: false
 
    });
-   const {staffregnumber, password, error, loading} = values;
+   const {staffregnumber, password, error, loading, redirectToReferrer} = values;
    //handle change input
    const handleChange= name => event =>{
         setValues({...values, error: false, [name]: event.target.value});
@@ -26,26 +28,17 @@ const clickSubmit = async (event) =>{
     setValues({...values, error: false, loading: true});
     //access sign in api
     let signdata = await signin({staffregnumber, password});
-    console.log(signdata);
-    //check if error in sign in
-    //if no  error authenticate by writting to localstorage
+    if(signdata.error){
+        setValues({...values, error: signdata.error, loading: false});
+    }
+    else{
+        authenticate(signdata, ()=>{
+            setValues({...values, redirectToReferrer: true});
+
+        });
+    }
     
 }
-
-
-
-//handle submission of form
-
-      //if(signdata.error){
-        //setValues({...values, error:signdata.error,loading: false});
-    //}else{
-     //   authenticate(signdata, () => {
-       //     setValues({...values,redirectToReferrer: true});
-       // });
-    //}
-    
-    
-//};
 
 
     const signUpForm = () => (
@@ -61,6 +54,31 @@ const clickSubmit = async (event) =>{
             <button onClick={clickSubmit} type="submit" className="btn btn-primary">Submit</button>
             </form>
     );
+
+    //show loading
+    const showLoading =() =>(
+        loading && (
+            <div className="spinning">
+                <div></div>
+                <div></div>
+            </div>
+        )
+    );
+    // redirect user to dashboard if referer is true
+    const redirectUser = () =>{
+        if(redirectToReferrer){
+            return <Redirect to="/hrdashboard"/>
+        }
+    };
+    //error div
+const showError = () => (
+    <div className="alert alert-danger" style={{display: error ? '': 'none'}}>
+         {error}
+      
+    </div>
+    );
+ 
+  
     
 return(
     <Layout className="outerdiv">
@@ -69,6 +87,9 @@ return(
         <div className="card">
             <div className="card-header">Login</div>
             <div className="card-body">
+                {showLoading ()}
+                {showError()}
+                {redirectUser()}
                 {signUpForm()}
             </div>
         </div>

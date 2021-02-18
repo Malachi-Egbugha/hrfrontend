@@ -1,10 +1,12 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {isActive} from '../auth';
+import {signout} from '../Apicalls/apicore';
 import logo from '../assets/images/logo.jpg';
 
-const Sidebar = ({history})=> 
+const Sidebar = ()=> 
 {
+    let history = useHistory();
     const closeSidebar = async () =>
     {
         //define central store nd access redux
@@ -12,7 +14,11 @@ const Sidebar = ({history})=>
         sidebar.classList.remove("sidebar_responsive");
     
     
-    }
+    };
+    const signoutnow =  () => {
+        signout().then(history.push("/"));    
+
+    };
 return(
     
 <div id="sidebar">
@@ -122,7 +128,7 @@ return(
 </div>
 <div className="sidebar__logout">
     
-    <span className="nav-link" style={{cursor: 'pointer', color: 'red'}}>
+    <span onClick={() => signoutnow ()} className="nav-link" style={{cursor: 'pointer', color: 'red'}}>
              <i className="fa fa-power-off"></i>
              Log out
              </span>
@@ -133,4 +139,4 @@ return(
 </div>
 )
         }
-export default withRouter(Sidebar);
+export default Sidebar;

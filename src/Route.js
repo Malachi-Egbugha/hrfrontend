@@ -5,16 +5,17 @@ import Dashboard from './Pages/Dashboard'
 import Profile from './Pages/Profile'
 import Manageemployee from './Pages/Manageemployee'
 import Addemployee from './Pages/Addemployee'
+import PrivateRoute from './auth/Privateroute';
 
 const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Signin} />
-                <Route path="/hrdashboard" exact component={Dashboard} />
-                <Route path="/profile" exact component={Profile} />
-                <Route path="/manageemployee" exact component={Manageemployee} />
-                <Route path="/addemployee" exact component={Addemployee} />
+                <PrivateRoute path="/hrdashboard" exact component={Dashboard} />
+                <PrivateRoute path="/profile" exact component={Profile} />
+                <PrivateRoute path="/manageemployee" exact component={Manageemployee} />
+                <PrivateRoute path="/addemployee" exact component={Addemployee} />
 
                 
 
