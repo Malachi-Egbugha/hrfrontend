@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import Layouttwo from '../Layout/Layouttwo';
-import {getUsers} from "../Apicalls/apicore";
+import {getUsers,updateUser } from "../Apicalls/apicore";
 
 
 const Manageemployee =()=>{
@@ -13,6 +13,15 @@ const Manageemployee =()=>{
         getusers.error
         ?setError(getusers.error)
         :setdisplayUsers(getusers.users);
+    };
+    const changeStatus = async (event) =>{
+        let status;
+        event.target.innerText == 'Deactivate'? status ='deactive': status = 'active';
+        let id = event.target.value;
+        updateUser().then.catch()
+        console.log(status);
+        console.log(id);
+
     }
    
     useEffect(()=>{
@@ -46,6 +55,7 @@ return(
                         <th scope="col">EmployeeType</th>
                         <th scope="col">EmployeeGrade</th>
                         <th scope="col">Designation</th>
+                        <th scope="col">Line Manager</th>
                         <th scope="col">Branch</th>
                         <th scope="col">Department</th>
                         <th scope="col">DateJoin</th>
@@ -61,13 +71,14 @@ return(
                    displayUsers.map((u,i)=>(
                     <tr>
                     <td>{i + 1}</td>         
-                    <td><button type="button" className={u.status == 'active' ? 'btn btn-success' : 'btn btn-danger'}>{u.status == 'active' ? 'Deactivate' : 'Activate'}</button></td>
+                    <td><button onClick={changeStatus} value={u._id} type="button" className={u.status == 'active' ? 'btn btn-success' : 'btn btn-danger'}>{u.status == 'active' ? 'Deactivate' : 'Activate'}</button></td>
                     <td>{u.firstname}</td>
                     <td>{u.lastname}</td>
                     <td>{u.staffregnumber}</td>
                     <td>{u.employeetype}</td>
                     <td>{u.employeegrade}</td>
                     <td>{u.designation}</td>
+                    <td>{u.linemanager}</td>
                     <td>{u.branch}</td>
                     <td>{u.department}</td>
                     <td>{u.createdAt}</td>

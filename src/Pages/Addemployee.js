@@ -14,6 +14,7 @@ const Addemployee =()=>{
         employeetype: '',
         employeegrade: '',
         designation: '',
+        linemanager: '',
         branch: '',
         phone: '',
         department:'',
@@ -31,6 +32,7 @@ const Addemployee =()=>{
         employeetype,
         employeegrade,
         designation,
+        linemanager,
         branch,
         phone,
         department,
@@ -47,11 +49,12 @@ const Addemployee =()=>{
 
      const clickSubmit = (event) =>{
         event.preventDefault();
+        console.log(values);
         setValues({...values, error:'', loading: true});
         signup({...values})
         .then(data =>{
             if(data.error){
-                console.log(data.error);
+               // console.log(data.error);
                 setValues({...values, error: data.error})
             }else{
                 
@@ -89,6 +92,12 @@ const Addemployee =()=>{
         <h2> Loading ....... </h2>
         </div>
     )
+    const showError = () =>  (
+        <div className="alert alert-danger" style={{display: error ? '': 'none'}}>
+             {error}
+          
+        </div>
+        );
     
     const signUpForm = () => (
         <form onSubmit={clickSubmit}>
@@ -147,7 +156,18 @@ const Addemployee =()=>{
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
                         <label for="designation">Designation:</label>
-                            <input onChange={handleChange('designation')} value={designation} type="text" className="form-control" id="designation" aria-describedby="emailHelp" placeholder="Enter Designation" required/>
+                            <select onChange={handleChange('designation')} class="form-control" id="designation" required>
+                            <option>Please Select</option>
+                                <option value="icthead">HEAD ICT</option>
+                                <option value="loadhead">HEAD LOAN MONITORING</option>
+                                <option value="credithead">HEAD CREDIT</option>
+                                <option value="recoveryhead">HEAD LOAN RECOVERY</option>
+                                <option value="internalcontrolhead">HEAD INTERNAL CONTROL</option>
+                                <option value="operationhead">HEAD OPERATION</option>
+                                <option value="hrhead">LEGAL ADVISER</option>
+                                <option value="hr">HR STAFF</option>
+                                <option value="others">OTHERS</option>
+                            </select>
                         </div>
                   </div>
                   <div className="input-field col-sm-6 col-lg-4">
@@ -195,6 +215,22 @@ const Addemployee =()=>{
                             
                         </div>
                   </div>
+
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                        <label for="linemanager">Line Manager:</label>
+                            <select onChange={handleChange('linemanager')} class="form-control" id="linemanager" required>
+                            <option>Please Select</option>
+                                <option value="icthead">HEAD ICT</option>
+                                <option value="loadhead">HEAD LOAN MONITORING</option>
+                                <option value="credithead">HEAD CREDIT</option>
+                                <option value="recoveryhead">HEAD LOAN RECOVERY</option>
+                                <option value="internalcontrolhead">HEAD INTERNAL CONTROL</option>
+                                <option value="operationhead">HEAD OPERATION</option>
+                                <option value="none">NONE</option>
+                            </select>
+                        </div>
+                  </div>
                   
          </div>
             
@@ -215,6 +251,7 @@ return(
                 <hr class="main__cards"/>
                 
                 {showLoading()}
+                {showError()}
                 {showSuccess()}
                 {signUpForm()}
           
