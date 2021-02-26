@@ -96,7 +96,8 @@ export const getLeaves =async (page) => {
 //update user
 export const updateUser =async (id,update) => {
     try{
-    let updateuser = await fetch(`${USERAPI}/${id}`, {
+    let updateuser = await fetch(`${USERAPI}/updateuser/${id}`, {
+        
         method: "PUT",
         headers:{
             Accept: 'application/json',

@@ -6,6 +6,7 @@ import {getUsers,updateUser } from "../Apicalls/apicore";
 const Manageemployee =()=>{
     const [displayUsers, setdisplayUsers] = useState([]);
     const [error, setError] = useState(false);
+    const [displayinfo, setInfo] = useState(false);
    
 
     const loadDsiplayUsers = async () =>{
@@ -18,9 +19,10 @@ const Manageemployee =()=>{
         let status;
         event.target.innerText == 'Deactivate'? status ='deactive': status = 'active';
         let id = event.target.value;
-        updateUser().then.catch()
-        console.log(status);
-        console.log(id);
+        let updatestatus = await updateUser(id, {status});
+        updatestatus.error ? setdisplayUsers(updatestatus.error)
+        :setInfo(true);
+       loadDsiplayUsers();
 
     }
    
@@ -37,6 +39,7 @@ return(
                     <div className="main__greeting">
                         <h1>MUTUAL TRUST MICROFINANCE BANK(MANAGE EMPLOYEES)</h1>
                         <p>Welcome to your admin</p>
+                        <p>{displayinfo}</p>
                     </div>
                 </div>
 

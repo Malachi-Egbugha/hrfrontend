@@ -1,7 +1,8 @@
+import { Component } from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {isAuthenticated} from './index';
+import {isAuthenticated, hrAuthenticated} from './index';
 
-const PrivateRoute = ({component: Component, ...rest})=>(
+export const PrivateRoute = ({component: Component, ...rest})=>(
     <Route {...rest} render={props =>
          isAuthenticated()? (
          <Component {...props}/>
@@ -16,4 +17,22 @@ const PrivateRoute = ({component: Component, ...rest})=>(
         }
         />
 );
-export default PrivateRoute;
+
+export const HrPrivateRoute = ({component: Component, ...rest}) => (
+    <Route {...rest} render={props => 
+        hrAuthenticated()? (
+            <Component {...props}/>
+        ):(
+            <Redirect 
+            to={{
+                pathname: "/",
+                state:{from: props.location}
+
+            }}
+             />
+        )
+
+    }
+    />
+
+);

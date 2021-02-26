@@ -6,7 +6,8 @@ import Profile from './Pages/Profile'
 import Manageemployee from './Pages/Manageemployee'
 import Addemployee from './Pages/Addemployee'
 import Leaveapplication from './Pages/Leaveapplication'
-import PrivateRoute from './auth/Privateroute';
+import Leaveapply from './Pages/Leaveapply'
+import {PrivateRoute,HrPrivateRoute} from './auth/Privateroute';
 
 const Routes = () => {
     return (
@@ -15,9 +16,10 @@ const Routes = () => {
                 <Route path="/" exact component={Signin} />
                 <PrivateRoute path="/hrdashboard" exact component={Dashboard} />
                 <PrivateRoute path="/profile" exact component={Profile} />
-                <PrivateRoute path="/manageemployee" exact component={Manageemployee} />
+                <HrPrivateRoute path="/manageemployee" exact component={Manageemployee} />
                 <PrivateRoute path="/addemployee" exact component={Addemployee} />
                 <PrivateRoute path="/leaveapplications" exact component={Leaveapplication} />
+                <PrivateRoute path="/leaveapply" exact component={Leaveapply} />
 
 
                 

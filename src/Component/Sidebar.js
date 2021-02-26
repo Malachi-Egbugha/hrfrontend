@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {isActive} from '../auth';
+import {isActive,  isHr} from '../auth';
 import {signout} from '../Apicalls/apicore';
 import logo from '../assets/images/logo.jpg';
 
@@ -21,7 +21,9 @@ const Sidebar = ()=>
     };
 return(
     
+    
 <div id="sidebar">
+    {console.log(isHr())}
 <div className="sidebar__title" >
     <div className="sidebar__img">
         
@@ -44,99 +46,34 @@ return(
     <Link to="/profile">Profile</Link>
 </div>
 
-<div className={isActive(history, '/manageemployee')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+<div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/manageemployee')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-handshake-o"></i>
     <Link to="/manageemployee">Manage Employee</Link>
 </div>
-<div className={isActive(history, '/addemployee')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+<div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/addemployee')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-handshake-o"></i>
     <Link to="/addemployee">Add Employee</Link>
 </div>
 <h2>LEAVES</h2>
-<div className={isActive(history, '/leaveapplications')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+<   div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/leaveapplications')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
-    <Link to="leaveapplications">Leave Applications</Link>
+    <Link to="/leaveapplications">Leave Applications</Link>
     </div>
-    <div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+    <div className={isActive(history, '/leaveapply')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
-    <Link to="#">Leave Allocation</Link>
+    <Link to="/leaveapply">Apply for Leave</Link>
     </div>
-    <div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-<Link to="#">Leave Report</Link>
-
     
-</div>
-
-<h2>ATTENDANCE</h2>
-<div className={isActive(history, '/notice')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+    <div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
-    <Link to="/notice">Check Notice board</Link>
-</div>
-
-
-<h2>PAYROLL</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>TAX AND BENEFIT</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>EMPLOYEE LIFE CYCLE</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>RECRUITMENT</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-
-<h2>TRAINING</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-
+    <Link to="#">Leave Report</Link>
+    </div>
 <h2>PERFORMANCE</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>EXPENSE CLAIM</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>LOANS</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>SHIFT MANAGEMENT</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>FLEET MANAGEMENT</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>SETTING</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
-<h2>REPORTS</h2>
-<div className={isActive(history, '/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="#">Submenu</Link>
-</div>
+    <div className={isActive(history, '/appraisal')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+        <i className="fa fa-money"></i>
+        <Link to="/appraisal">Appraisal</Link>
+    </div>
+
 <div className="sidebar__logout">
     
     <span onClick={() => signoutnow ()} className="nav-link" style={{cursor: 'pointer', color: 'red'}}>
