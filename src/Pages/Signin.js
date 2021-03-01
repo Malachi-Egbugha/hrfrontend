@@ -67,7 +67,7 @@ const clickSubmit = async (event) =>{
     // redirect user to dashboard if referer is true
     const redirectUser = () =>{
         if(redirectToReferrer){
-            return <Redirect to="/hrdashboard"/>
+            return <Redirect to="/hrsystem/hrdashboard"/>
         }
     };
     //error div

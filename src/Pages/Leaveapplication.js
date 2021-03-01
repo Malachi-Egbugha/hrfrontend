@@ -59,7 +59,7 @@ const Leaveapplications =()=>{
               displayLeaves.map((u,i)=>(
                 <tr key={i}>
                 <td>{1 + i}</td>  
-                <td><button type="button" className="btn btn-success">lineManager</button></td>       
+                <td><button type="button" className="btn btn-success">{u.lineleavestatus}</button></td>       
                 <td><button type="button" className="btn btn-success">{u.leavestatus}</button></td>
                 <td>{u.firstname}</td>
                 <td>{u.lastname}</td>

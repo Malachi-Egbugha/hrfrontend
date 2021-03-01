@@ -22,14 +22,14 @@ import {isActive} from '../auth';
         <i className="fa fa-bars"></i>
     </div>
     <div className="navbar__left">
-        <Link to="/">DASHBOARD</Link>
+        <Link to="/hrsystem">DASHBOARD</Link>
          {
-             isActive(history, '/manageemployee')  ? <Link  to="/addemployee">ADD EMPLOYEE</Link> : ' '
+             isActive(history, '/hrsystem/manageemployee')  ? <Link  to="/addemployee">ADD EMPLOYEE</Link> : ' '
              
         
          }
           {
-             isActive(history, '/manageemployee') ? <Link className="active_link" to="#">MANAGE EMPLOYEE</Link> : ' '
+             isActive(history, '/hrsystem/manageemployee') ? <Link className="active_link" to="#">MANAGE EMPLOYEE</Link> : ' '
              
         
          }

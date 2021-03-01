@@ -49,12 +49,11 @@ const Addemployee =()=>{
 
      const clickSubmit = (event) =>{
         event.preventDefault();
-        console.log(values);
         setValues({...values, error:'', loading: true});
         signup({...values})
         .then(data =>{
             if(data.error){
-               // console.log(data.error);
+               
                 setValues({...values, error: data.error})
             }else{
                 

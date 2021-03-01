@@ -9,7 +9,7 @@ export const PrivateRoute = ({component: Component, ...rest})=>(
          ): (
              <Redirect
              to={{
-                 pathname: "/",
+                 pathname: "/hrsystem",
                  state:{from: props.location}
              }}
              />
@@ -25,7 +25,7 @@ export const HrPrivateRoute = ({component: Component, ...rest}) => (
         ):(
             <Redirect 
             to={{
-                pathname: "/",
+                pathname: "/hrsystem",
                 state:{from: props.location}
 
             }}

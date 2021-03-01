@@ -1,5 +1,5 @@
 
-import {GENERALAPI,CLOUDAPI, USERAPI, LEAVEAPI} from "./config";
+import {GENERALAPI,USERAPI, LEAVEAPI} from "./config";
 
 export const signup =async (user) =>{
     const {token} =  JSON.parse(localStorage.getItem("usersign"));
@@ -15,6 +15,29 @@ try{
         body: JSON.stringify(user)
     });
         return createUsers.json();
+}
+catch(err)
+{
+       console.log(err);
+
+}
+
+};
+//signup leave
+export const leavesignup =async (leave) =>{
+    const {token} =  JSON.parse(localStorage.getItem("usersign"));
+
+try{
+    let createLeaves = await fetch(`${LEAVEAPI}/signup`,{
+        method:"POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            "authorization" : `Bearer: ${token}`
+        },
+        body: JSON.stringify(leave)
+    });
+        return createLeaves.json();
 }
 catch(err)
 {

@@ -34,10 +34,12 @@ export const isAuthenticated = () =>{
 };
 //check is user is in hr department
 export const hrAuthenticated = () =>{
+  console.log('done');
   if(typeof window == 'undefine'){
     return false;
 
   }
+  console.log('done');
   if(localStorage.getItem('usersign'))
   {
     

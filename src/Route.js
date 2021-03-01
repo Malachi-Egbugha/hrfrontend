@@ -13,17 +13,17 @@ const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Signin} />
-                <PrivateRoute path="/hrdashboard" exact component={Dashboard} />
-                <PrivateRoute path="/profile" exact component={Profile} />
-                <HrPrivateRoute path="/manageemployee" exact component={Manageemployee} />
-                <PrivateRoute path="/addemployee" exact component={Addemployee} />
-                <PrivateRoute path="/leaveapplications" exact component={Leaveapplication} />
-                <PrivateRoute path="/leaveapply" exact component={Leaveapply} />
+                <Route path="/hrsystem" exact component={Signin} />
+                <PrivateRoute path="/hrsystem/hrdashboard" exact component={Dashboard} />
+                <PrivateRoute path="/hrsystem/profile" exact component={Profile} />
+                <PrivateRoute path="/hrsystem/manageemployee" exact component={Manageemployee} />
+                <PrivateRoute path="/hrsystem/addemployee" exact component={Addemployee} />
+                <PrivateRoute path="/hrsystem/leaveapplications" exact component={Leaveapplication} />
+                <PrivateRoute path="/hrsystem/leaveapply" exact component={Leaveapply} />
 
 
                 
-
+               
                 
 
             </Switch>
