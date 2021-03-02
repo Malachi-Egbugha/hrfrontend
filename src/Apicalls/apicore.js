@@ -25,7 +25,11 @@ catch(err)
 };
 //signup leave
 export const leavesignup =async (leave) =>{
+    console.log(leave);
     const {token} =  JSON.parse(localStorage.getItem("usersign"));
+   
+
+   
 
 try{
     let createLeaves = await fetch(`${LEAVEAPI}/signup`,{
@@ -106,6 +110,8 @@ export const signout = (next) =>{
     }
     catch(err) {console.log(err)}
 };
+
+
 // get applied leaves
 export const getLeaves =async (page) => {
     try{
@@ -113,6 +119,27 @@ export const getLeaves =async (page) => {
         method: "GET"
     });
     return fetleaves.json()
+    }
+    catch(err) {console.log(err)}
+};
+
+
+
+// get applied  leave by staffid
+export const getLeave =async (page) => {
+    const {token} =  JSON.parse(localStorage.getItem("usersign"));
+    const {user} =  JSON.parse(localStorage.getItem("usersign"));
+
+    try{
+    let fetchleave = await fetch(`${LEAVEAPI}/myleave/${user.staffregnumber}?page=${page}`, {
+        method: "POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            "authorization" : `Bearer: ${token}`
+        },
+    });
+    return fetchleave.json()
     }
     catch(err) {console.log(err)}
 };

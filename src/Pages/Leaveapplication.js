@@ -9,11 +9,18 @@ const Leaveapplications =()=>{
    
 
     const loadDsiplayLeaves = async () =>{
-        let getLeave =await getLeaves('1');
+        let getLeave =await getLeaves('4');
         getLeave.error
         ?setError(getLeave.error)
         :setdisplayLeaves(getLeave.leaves);
        
+    }
+    const submitstatus = (i) =>
+    {
+        let clickedstatus = document.getElementById(i);
+
+        console.log(clickedstatus.data);
+        //submit to backed
     }
    
     useEffect(()=>{
@@ -31,22 +38,22 @@ const Leaveapplications =()=>{
                 </div>
 
                 <hr className="main__cards"/>
-            <div className="charts">
+            <div className="container-fluid">
                
                 
-                <table className="table table-hover ">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                         <th scope="col"></th>
-                        <th>LineManager</th>
-                        <th>HrApproval</th>
-                        <th scope="col">Firstname</th>
-                        <th scope="col">Lastname</th>
+                        <th></th>
+                        <th scope="col"></th>
+                        <th scope="col">Status</th>
                         <th scope="col">StaffReg</th>
                         <th scope="col">Department</th>
                         <th scope="col">LeaveType</th>
                         <th scope="col">StartDate</th>
                         <th scope="col">EndDate</th>
+                        <th scope="col-2">Comment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,15 +66,29 @@ const Leaveapplications =()=>{
               displayLeaves.map((u,i)=>(
                 <tr key={i}>
                 <td>{1 + i}</td>  
-                <td><button type="button" className="btn btn-success">{u.lineleavestatus}</button></td>       
-                <td><button type="button" className="btn btn-success">{u.leavestatus}</button></td>
-                <td>{u.firstname}</td>
-                <td>{u.lastname}</td>
+                <td ><button onClick={() => submitstatus(i)}  type="button" className="btn btn-success">Submit</button></td>       
+                <td>
+
+                    <form>
+                    <select data={u._id}  id={i}   class="form-control"  required>
+                                <option value="accept">ACCEPT</option>
+                                <option value="deny">DENY</option>
+                   
+                              
+                     </select>
+                     
+
+                    </form>
+                   
+                    
+                    </td>
+                <td>{u.leavestatus}</td>
                 <td>{u.staffregnumber}</td>
                 <td>{u.department}</td>
-                <td>{u. leavetype}</td>
+                <td>{u.leavetype}</td>
                 <td>{u.leavestart}</td>
                 <td>{u.leaveend}</td>
+                <td>{u.comment}</td>
                 </tr>
               ))
                    

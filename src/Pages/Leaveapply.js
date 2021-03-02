@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import Layouttwo from '../Layout/Layouttwo';
-import {leavesignup} from '../Apicalls/apicore';
+import {leavesignup, getLeave} from '../Apicalls/apicore';
+
 
 
 
@@ -21,16 +22,28 @@ const Leaveapply =()=>{
         staffregnumber,
         department,
         leavetype: '',
-        startdate: '',
-        enddate: '',
+        leavestart: '',
+        leaveend: '',
         comment: '',
         error: '',
         loading: false
     });
+    const [displayLeaves, setdisplayLeaves] =useState([]);
+     const loadDsiplayLeaves = async () =>{
+        let getLeaves =await getLeave('1');
+        getLeaves.error
+        ?setValues({...values,error: getLeave.error})
+        :setdisplayLeaves(getLeaves.myleave);
+       
+    };
+    useEffect(()=>{
+        loadDsiplayLeaves();
+    },[])
+    
     const {
          leavetype,
-        startdate,
-        enddate,
+         leavestart,
+         leaveend,
         createLeave,
         comment,
         error,
@@ -58,13 +71,14 @@ const Leaveapply =()=>{
              staffregnumber:'',
              department:'',
              leavetype: '',
-             startdate: '',
-             enddate: '',
+             leavestart: '',
+             leaveend: '',
              comment: '',
              error: '',
              loading: false
            
             });
+            loadDsiplayLeaves();
            
        }
        catch(err){
@@ -118,15 +132,15 @@ const showError = () =>  (
                   </div>
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
-                            <label for="startdate">Start Date:</label>
-                            <input onChange={handleChange('startdate')} value={startdate} type="date" className="form-control" id="startdate" aria-describedby="emailHelp"  required/>
+                            <label for="leavestart">Start Date:</label>
+                            <input onChange={handleChange('leavestart')} value={leavestart} type="date" className="form-control" id="leavestart" aria-describedby="emailHelp"  required/>
                             
                         </div>
                   </div>
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
-                            <label for="enddate">End Date:</label>
-                            <input onChange={handleChange('enddate')} value={enddate}  type="date" className="form-control" id="enddate" aria-describedby="emailHelp"  required/>
+                            <label for="leaveend">End Date:</label>
+                            <input onChange={handleChange('leaveend')} value={leaveend}  type="date" className="form-control" id="leaveend" aria-describedby="emailHelp"  required/>
                             
                         </div>
                   </div>
@@ -149,6 +163,49 @@ const showError = () =>  (
             <button className="btn btn-primary">Submit</button>
             </form>
     );
+    const showLeave = () => (
+        <table className="table table-hover ">
+        <thead>
+            <tr>
+            <th scope="col"></th>
+            <th>LineManager</th>
+            <th>HrApproval</th>
+            <th scope="col">StaffReg</th>
+            <th scope="col">LeaveType</th>
+            <th scope="col">StartDate</th>
+            <th scope="col">EndDate</th>
+            <th scope="col">Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+        {
+              
+              displayLeaves.map((u,i)=>(
+                <tr key={i}>
+                <td>{1 + i}</td>  
+                <td><button type="button" className="btn btn-success">{u.lineleavestatus}</button></td>       
+                <td><button type="button" className="btn btn-success">{u.leavestatus}</button></td>
+                <td>{u.staffregnumber}</td>
+                <td>{u.leavetype}</td>
+                <td>{u.leavestart}</td>
+                <td>{u.leaveend}</td>
+                <td>{u.comment}</td>
+                </tr>
+              ))
+                   
+              
+             
+              
+              
+
+
+          }
+         
+
+            </tbody>
+        </table>
+
+    );
     return(
     <Layouttwo>
         <div class="main__container">
@@ -167,6 +224,7 @@ const showError = () =>  (
                 {showSuccess()}
                 {signUpLeaveForm()}
                 <hr/>
+                {showLeave()}
           
 
 
