@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import Layouttwo from '../Layout/Layouttwo';
-import {getLeaves} from "../Apicalls/apicore";
+import {getLeaves,updateLeave} from "../Apicalls/apicore";
 
 
 const Leaveapplications =()=>{
@@ -9,19 +9,29 @@ const Leaveapplications =()=>{
    
 
     const loadDsiplayLeaves = async () =>{
-        let getLeave =await getLeaves('4');
+        let getLeave =await getLeaves('1');
         getLeave.error
         ?setError(getLeave.error)
         :setdisplayLeaves(getLeave.leaves);
        
     }
-    const submitstatus = (i) =>
+    const submitstatus = async (i,Id) =>
     {
+       
         let clickedstatus = document.getElementById(i);
-
-        console.log(clickedstatus.data);
-        //submit to backed
+        let body = {leavestatus : clickedstatus.value};
+        let updatedleave = await updateLeave(Id,body);
+        updatedleave.error
+        ?setError(updatedleave.error)
+        :loadDsiplayLeaves();
+        
     }
+    const showError = () =>  (
+        <div className="alert alert-danger" style={{display: error ? '': 'none'}}>
+             {error}
+          
+        </div>
+        );
    
     useEffect(()=>{
         loadDsiplayLeaves();
@@ -38,6 +48,7 @@ const Leaveapplications =()=>{
                 </div>
 
                 <hr className="main__cards"/>
+                {showError()}
             <div className="container-fluid">
                
                 
@@ -48,6 +59,7 @@ const Leaveapplications =()=>{
                         <th></th>
                         <th scope="col"></th>
                         <th scope="col">Status</th>
+                        <th scope="col">UnitHeader</th>
                         <th scope="col">StaffReg</th>
                         <th scope="col">Department</th>
                         <th scope="col">LeaveType</th>
@@ -66,11 +78,13 @@ const Leaveapplications =()=>{
               displayLeaves.map((u,i)=>(
                 <tr key={i}>
                 <td>{1 + i}</td>  
-                <td ><button onClick={() => submitstatus(i)}  type="button" className="btn btn-success">Submit</button></td>       
+                <td >
+                    {u.leavestatus != 'pending'? <button  style={{display: u.lineleavestatus == 'pending' || u.lineleavestatus  == 'deny' ? 'none': ''}}  onClick={() => submitstatus(i,u._id)}  type="button" className="btn btn-success" disabled  >Submit</button>: <button style={{display: u.lineleavestatus == 'pending' || u.lineleavestatus  == 'deny' ? 'none': ''}}  onClick={() => submitstatus(i,u._id)}  type="button" className="btn btn-success"  >Submit</button>}
+                    </td>       
                 <td>
 
                     <form>
-                    <select data={u._id}  id={i}   class="form-control"  required>
+                    <select  id={i}   class="form-control"  required>
                                 <option value="accept">ACCEPT</option>
                                 <option value="deny">DENY</option>
                    
@@ -82,7 +96,11 @@ const Leaveapplications =()=>{
                    
                     
                     </td>
-                <td>{u.leavestatus}</td>
+                    
+                    
+
+                <td style={{color: "#fff", backgroundColor: u.leavestatus == 'pending'? '#D55451' : '#2A1372' }}>{u.leavestatus}</td>   
+                <td>{u.lineleavestatus}</td>
                 <td>{u.staffregnumber}</td>
                 <td>{u.department}</td>
                 <td>{u.leavetype}</td>

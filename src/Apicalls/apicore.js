@@ -138,11 +138,33 @@ export const getLeave =async (page) => {
             "Content-Type": "application/json",
             "authorization" : `Bearer: ${token}`
         },
+        
     });
     return fetchleave.json()
     }
     catch(err) {console.log(err)}
 };
+
+
+
+// update  leave by staffid
+export const updateLeave =async (id,content) => {
+    const {token} =  JSON.parse(localStorage.getItem("usersign"));
+    try{
+    let updateleave = await fetch(`${LEAVEAPI}/updateleave/${id}`, {
+        method: "POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            "authorization" : `Bearer: ${token}`
+        },
+        body: JSON.stringify(content)
+    });
+    return updateleave.json()
+    }
+    catch(err) {console.log(err)}
+};
+
 //update user
 export const updateUser =async (id,update) => {
     try{
@@ -160,5 +182,6 @@ export const updateUser =async (id,update) => {
     }
     catch(err) {console.log(err)}
 };
+
 
 
