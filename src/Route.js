@@ -7,7 +7,8 @@ import Manageemployee from './Pages/Manageemployee'
 import Addemployee from './Pages/Addemployee'
 import Leaveapplication from './Pages/Leaveapplication'
 import Leaveapply from './Pages/Leaveapply'
-import {PrivateRoute,HrPrivateRoute} from './auth/Privateroute';
+import Lineleaveapply from './Pages/Lineleaveapply'
+import {PrivateRoute,HrPrivateRoute, UnitHeadPrivateRoute} from './auth/Privateroute';
 
 const Routes = () => {
     return (
@@ -16,15 +17,17 @@ const Routes = () => {
                 <Route path="/hrsystem" exact component={Signin} />
                 <PrivateRoute path="/hrsystem/hrdashboard" exact component={Dashboard} />
                 <PrivateRoute path="/hrsystem/profile" exact component={Profile} />
-                <PrivateRoute path="/hrsystem/manageemployee" exact component={Manageemployee} />
-                <PrivateRoute path="/hrsystem/addemployee" exact component={Addemployee} />
-                <PrivateRoute path="/hrsystem/leaveapplications" exact component={Leaveapplication} />
+                <HrPrivateRoute path="/hrsystem/manageemployee" exact component={Manageemployee} />
+                <HrPrivateRoute path="/hrsystem/addemployee" exact component={Addemployee} />
+                <HrPrivateRoute path="/hrsystem/leaveapplications" exact component={Leaveapplication} />
                 <PrivateRoute path="/hrsystem/leaveapply" exact component={Leaveapply} />
+                <UnitHeadPrivateRoute path="/hrsystem/lineapply" exact component={Lineleaveapply} />
+             
 
 
                 
                
-                
+               
 
             </Switch>
         </BrowserRouter>

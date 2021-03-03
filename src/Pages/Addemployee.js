@@ -157,15 +157,9 @@ const Addemployee =()=>{
                         <label for="designation">Designation:</label>
                             <select onChange={handleChange('designation')} class="form-control" id="designation" required>
                             <option>Please Select</option>
-                                <option value="icthead">HEAD ICT</option>
-                                <option value="loadhead">HEAD LOAN MONITORING</option>
-                                <option value="credithead">HEAD CREDIT</option>
-                                <option value="recoveryhead">HEAD LOAN RECOVERY</option>
-                                <option value="internalcontrolhead">HEAD INTERNAL CONTROL</option>
-                                <option value="operationhead">HEAD OPERATION</option>
-                                <option value="hrhead">LEGAL ADVISER</option>
-                                <option value="hr">HR STAFF</option>
-                                <option value="others">OTHERS</option>
+                                <option value="unithead">HEAD</option>
+                                <option value="staff">STAFF</option>
+        
                             </select>
                         </div>
                   </div>
@@ -203,6 +197,9 @@ const Addemployee =()=>{
                                 <option value="payroll">Payroll</option>
                                 <option value="operations">Operations</option>
                                 <option value="recovery">Recovery</option>
+                                <option value="digitalmarketting">Digital Marketting</option>
+                                <option value="devfinance">Development Finance</option>
+                                <option value="fco">Finance</option>
                             </select>
                         </div>
                   </div>
@@ -217,7 +214,7 @@ const Addemployee =()=>{
 
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
-                        <label for="linemanager">Line Manager:</label>
+                        <label for="linemanager">Unit Head:</label>
                             <select onChange={handleChange('linemanager')} class="form-control" id="linemanager" required>
                             <option>Please Select</option>
                                 <option value="icthead">HEAD ICT</option>
@@ -226,6 +223,12 @@ const Addemployee =()=>{
                                 <option value="recoveryhead">HEAD LOAN RECOVERY</option>
                                 <option value="internalcontrolhead">HEAD INTERNAL CONTROL</option>
                                 <option value="operationhead">HEAD OPERATION</option>
+                                <option value="digitalmarkettinghead">DIGITAL MARKETTING</option>
+                                <option value="cmo">CHIEF MARKETTING OFFICER</option>
+                                <option value="cfo">CHIEF FINANCIAL OFFICER</option>
+                                <option value="headpayroll">PAYROLL MANAGER</option>
+                                <option value="headmarketajesa">MARKETTING MANAGER(Ajesa)</option>
+                                <option value="headmarketademola">MARKETTING MANAGER(Ademola)</option>
                                 <option value="none">NONE</option>
                             </select>
                         </div>

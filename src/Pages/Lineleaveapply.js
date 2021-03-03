@@ -3,7 +3,7 @@ import Layouttwo from '../Layout/Layouttwo';
 import {getLeaves,updateLeave} from "../Apicalls/apicore";
 
 
-const Leaveapplications =()=>{
+const Lineleaveapply =()=>{
     const [displayLeaves, setdisplayLeaves] = useState([]);
     const [error, setError] = useState(false);
    
@@ -133,4 +133,4 @@ const Leaveapplications =()=>{
 
 )
 }
-export default Leaveapplications;
+export default Lineleaveapply;

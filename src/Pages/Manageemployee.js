@@ -44,10 +44,10 @@ return(
                 </div>
 
                 <hr className="main__cards"/>
-            <div className="charts">
+            <div className="container-fluid">
                
                 
-                <table className="table table-hover ">
+                <table  class="table table-striped">
                     <thead>
                         <tr>
                         <th scope="col"></th>
@@ -85,7 +85,7 @@ return(
                     <td>{u.branch}</td>
                     <td>{u.department}</td>
                     <td>{u.createdAt}</td>
-                    <td>{u.status}</td>
+                    <td style={{color: "#fff", backgroundColor: u.status == 'active'? '#2A1372' : '#D55451' }}>{u.status}</td>
 
                    
                     

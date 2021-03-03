@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {isActive,  isHr} from '../auth';
+import {isActive,  isHr, isUnitHead} from '../auth';
 import {signout} from '../Apicalls/apicore';
 import logo from '../assets/images/logo.jpg';
 
@@ -39,6 +39,7 @@ return(
     <i className="fa fa-home"></i>
     <Link to="/hrsystem/hrdashboard">Dashboard</Link>
 </div>
+
 <h2>ACCOUNT</h2>
 <div className={isActive(history, '/hrsystem/profile')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-archive"></i>
@@ -53,20 +54,27 @@ return(
     <i className="fa fa-handshake-o"></i>
     <Link to="/hrsystem/addemployee">Add Employee</Link>
 </div>
+
+
 <h2>LEAVE MANAGEMENT</h2>
-<   div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/leaveapplications')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+<div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/leaveapplications')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
-    <Link to="/hrsystem/leaveapplications">Leave Applications</Link>
+    <Link to="/hrsystem/leaveapplications">Manage Leave Applications</Link>
     </div>
     <div className={isActive(history, '/hrsystem/leaveapply')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
     <Link to="/hrsystem/leaveapply">Apply for Leave</Link>
     </div>
-    
+    <div style={isUnitHead() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/lineapply')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
+    <i className="fa fa-money"></i>
+    <Link to="/hrsystem/lineapply">Manage Leave Applications</Link>
+    </div>
     <div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
     <i className="fa fa-money"></i>
     <Link to="#">Leave Report</Link>
     </div>
+
+
 <h2>PERFORMANCE MANAGEMENT</h2>
     <div className={isActive(history, '/hrsystem/appraisal')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
         <i className="fa fa-money"></i>

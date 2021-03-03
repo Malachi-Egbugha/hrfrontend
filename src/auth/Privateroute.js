@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {isAuthenticated, hrAuthenticated} from './index';
+import {isAuthenticated, hrAuthenticated, unitheadAuthenticated} from './index';
 
 export const PrivateRoute = ({component: Component, ...rest})=>(
     <Route {...rest} render={props =>
@@ -25,7 +25,27 @@ export const HrPrivateRoute = ({component: Component, ...rest}) => (
         ):(
             <Redirect 
             to={{
-                pathname: "/hrsystem",
+                pathname: "/hrsystem/hrdashboard",
+                state:{from: props.location}
+
+            }}
+             />
+        )
+
+    }
+    />
+
+);
+
+
+export const UnitHeadPrivateRoute = ({component: Component, ...rest}) => (
+    <Route {...rest} render={props => 
+        unitheadAuthenticated()? (
+            <Component {...props}/>
+        ):(
+            <Redirect 
+            to={{
+                pathname: "/hrsystem/hrdashboard",
                 state:{from: props.location}
 
             }}
