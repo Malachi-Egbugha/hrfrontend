@@ -65,11 +65,6 @@ const Leaveapply =()=>{
         setValues({
             ...values, 
              createLeave: leavecreate,
-             firstname: '',
-             lastname: '',
-             middlename:'',
-             staffregnumber:'',
-             department:'',
              leavetype: '',
              leavestart: '',
              leaveend: '',
@@ -164,7 +159,7 @@ const showError = () =>  (
             </form>
     );
     const showLeave = () => (
-        <table className="table table-hover ">
+        <table className="table table-striped ">
         <thead>
             <tr>
             <th scope="col"></th>
@@ -183,8 +178,8 @@ const showError = () =>  (
               displayLeaves.map((u,i)=>(
                 <tr key={i}>
                 <td>{1 + i}</td>  
-                <td><button type="button" className="btn btn-success">{u.lineleavestatus}</button></td>       
-                <td><button type="button" className="btn btn-success">{u.leavestatus}</button></td>
+                <td style={u.lineleavestatus == 'pending'? {backgroundColor: '#D55451'}: {backgroundColor: '#2A1372'} }><button style={{color: '#ffffff'}} type="button" className="btn">{u.lineleavestatus}</button></td>       
+                <td style={u.leavestatus == 'pending'? {backgroundColor: '#D55451'}: {backgroundColor: '#2A1372'} }><button style={{color: '#ffffff'}} type="button" className="btn">{u.leavestatus}</button></td>
                 <td>{u.staffregnumber}</td>
                 <td>{u.leavetype}</td>
                 <td>{u.leavestart}</td>
@@ -217,7 +212,7 @@ const showError = () =>  (
                     </div>
                 </div>
 
-                <hr class="main__cards"/>
+                <hr class="container-fluid"/>
                 
                 {showLoading()}
                 {showError()}

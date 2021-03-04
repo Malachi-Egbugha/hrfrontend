@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import Layouttwo from '../Layout/Layouttwo';
-import {getLeaves,updateLeave} from "../Apicalls/apicore";
+import {updateLeave, getdepartmentLeave} from "../Apicalls/apicore";
 
 
 const Lineleaveapply =()=>{
@@ -9,18 +9,19 @@ const Lineleaveapply =()=>{
    
 
     const loadDsiplayLeaves = async () =>{
-        let getLeave =await getLeaves('1');
+        let getLeave =await getdepartmentLeave('1');
+        console.log(getLeave);
         getLeave.error
         ?setError(getLeave.error)
-        :setdisplayLeaves(getLeave.leaves);
+        :setdisplayLeaves(getLeave.departmentleave);
        
     }
     const submitstatus = async (i,Id) =>
     {
-       
         let clickedstatus = document.getElementById(i);
-        let body = {leavestatus : clickedstatus.value};
+        let body = {lineleavestatus : clickedstatus.value};
         let updatedleave = await updateLeave(Id,body);
+       
         updatedleave.error
         ?setError(updatedleave.error)
         :loadDsiplayLeaves();
@@ -58,7 +59,7 @@ const Lineleaveapply =()=>{
                         <th scope="col"></th>
                         <th></th>
                         <th scope="col"></th>
-                        <th scope="col">Status</th>
+                       
                         <th scope="col">UnitHeader</th>
                         <th scope="col">StaffReg</th>
                         <th scope="col">Department</th>
@@ -71,16 +72,19 @@ const Lineleaveapply =()=>{
                     <tbody>
 
 
-                   
+             
               
           {
               
               displayLeaves.map((u,i)=>(
-                <tr key={i}>
+                  
+                <tr key={i} style={u.staffregnumber == JSON.parse(localStorage.getItem("usersign")).user.staffregnumber?{display: 'none'}: {display: ''}} >
                 <td>{1 + i}</td>  
                 <td >
-                    {u.leavestatus != 'pending'? <button  style={{display: u.lineleavestatus == 'pending' || u.lineleavestatus  == 'deny' ? 'none': ''}}  onClick={() => submitstatus(i,u._id)}  type="button" className="btn btn-success" disabled  >Submit</button>: <button style={{display: u.lineleavestatus == 'pending' || u.lineleavestatus  == 'deny' ? 'none': ''}}  onClick={() => submitstatus(i,u._id)}  type="button" className="btn btn-success"  >Submit</button>}
-                    </td>       
+                     { u.lineleavestatus != 'pending'? <button    onClick={() => submitstatus(i,u._id)}  type="button" className="btn btn-success" disabled  >Submit</button>:
+                      <button    onClick={() => submitstatus(i,u._id)}  type="button" className="btn btn-success" >Submit</button>
+                     }
+                </td>       
                 <td>
 
                     <form>
@@ -99,7 +103,7 @@ const Lineleaveapply =()=>{
                     
                     
 
-                <td style={{color: "#fff", backgroundColor: u.leavestatus == 'pending'? '#D55451' : '#2A1372' }}>{u.leavestatus}</td>   
+                  
                 <td style={{color: "#fff", backgroundColor: u.lineleavestatus == 'pending'? '#D55451' : '#2A1372' }}>{u.lineleavestatus}</td>
                 <td>{u.staffregnumber}</td>
                 <td>{u.department}</td>
