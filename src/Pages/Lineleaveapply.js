@@ -13,7 +13,7 @@ const Lineleaveapply =()=>{
         console.log(getLeave);
         getLeave.error
         ?setError(getLeave.error)
-        :setdisplayLeaves(getLeave.departmentleave);
+        :setdisplayLeaves(getLeave.linemanagers);
        
     }
     const submitstatus = async (i,Id) =>
@@ -43,7 +43,7 @@ const Lineleaveapply =()=>{
                 <div className="main__title">
                     <img src="assets/banner.jpg" alt=""/>
                     <div className="main__greeting">
-                        <h1>MUTUAL TRUST MICROFINANCE BANK(LEAVE MANAGEMENT)</h1>
+                        <h1>MUTUAL TRUST MFB(LEAVE MANAGEMENT)</h1>
                         <p>Welcome to your admin</p>
                     </div>
                 </div>

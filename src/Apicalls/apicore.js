@@ -62,6 +62,28 @@ export const getUsers =async (page) => {
     }
     catch(err) {console.log(err)}
 };
+//fetch all users
+export const getUser =async (page) => {
+    try{
+    let fetusers = await fetch(`${USERAPI}/alluser`, {
+        method: "GET",
+       
+    });
+    return fetusers.json()
+    }
+    catch(err) {console.log(err)}
+};
+//fetch all users with post
+export const getAllUsers =async (page) => {
+    try{
+    let fetusers = await fetch(`${USERAPI}/readallusers`, {
+        method: "POST",
+       
+    });
+    return fetusers.json()
+    }
+    catch(err) {console.log(err)}
+};
 
 //sigin api
 export const signin =async (user) =>{
@@ -151,7 +173,7 @@ export const getdepartmentLeave =async (page) => {
     const {user} =  JSON.parse(localStorage.getItem("usersign"));
 
     try{
-    let fetchleaves = await fetch(`${LEAVEAPI}/departmentleave/${user.department}?page=${page}`, {
+    let fetchleaves = await fetch(`${LEAVEAPI}/departmentleave/${user.staffregnumber}?page=${page}`, {
         method: "POST",
         headers:{
             Accept: 'application/json',

@@ -1,10 +1,29 @@
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Layouttwo from '../Layout/Layouttwo';
-import {signup} from '../Apicalls/apicore';
+import {signup,getAllUsers} from '../Apicalls/apicore';
 
 
 const Addemployee =()=>{
+    const [displaylinemanagers, setdisplaylinemanegers] =useState([]);
+    const loadLineManagers = () => {
+        getAllUsers().then(data => {
+            if (data.error) {
+                console.log(data.error)
+
+            } else {
+                
+                setdisplaylinemanegers(data.users)
+              
+            }
+        });
+    }
+    useEffect(() => {
+        
+        loadLineManagers();
+     
+
+    }, []);
      const [values, setValues] = useState({
         firstname: '',
         lastname: '',
@@ -14,6 +33,13 @@ const Addemployee =()=>{
         employeetype: '',
         employeegrade: '',
         designation: '',
+        group:'',
+        email:'',
+        nextofkinname:'',
+        nextofkinphone:'',
+        nextofkinrelationship: '',
+        nin:'',
+        address:'',
         linemanager: '',
         branch: '',
         phone: '',
@@ -21,6 +47,7 @@ const Addemployee =()=>{
         password: '',
         error: '',
         loading: false
+
 
     });
     const {
@@ -38,12 +65,20 @@ const Addemployee =()=>{
         department,
         password,
         error,
-        loading
+        loading,
+        group,
+        email,
+        nextofkinname,
+        nextofkinphone,
+        nextofkinrelationship,
+        nin,
+        address
 
     }= values;
      const handleChange = name => event =>{
         const value = event.target.value;
         setValues({...values, createUser:'', [name]: value});
+        loadLineManagers();
 
     };
 
@@ -78,6 +113,7 @@ const Addemployee =()=>{
                 
             }
         })
+        loadLineManagers();
     }
     const showSuccess = () => createUser && (
         <div className="alert alert-info">
@@ -154,15 +190,52 @@ const Addemployee =()=>{
                   </div>
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
-                        <label for="designation">Designation:</label>
-                            <select onChange={handleChange('designation')} class="form-control" id="designation" required>
+                        <label for="group">Group:</label>
+                            <select onChange={handleChange('group')} class="form-control" id="group" required>
                             <option>Please Select</option>
-                                <option value="unithead">HEAD</option>
-                                <option value="staff">STAFF</option>
+                                <option value="unithead">MANAGERS</option>
+                                <option value="staff">NON MANAGERS</option>
         
                             </select>
                         </div>
                   </div>
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                            <label for="designation">Designation:</label>
+                            <input onChange={handleChange('designation')} value={designation} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Designation" required/>
+                        </div>
+                  </div>
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                            <label for="email">Email:</label>
+                            <input onChange={handleChange('email')} value={email} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" required/>
+                        </div>
+                  </div>
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                            <label for="nextofkinname">Next of Kin:</label>
+                            <input onChange={handleChange('nextofkinname')} value={nextofkinname} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Next of Kin Name" required/>
+                        </div>
+                  </div>
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                            <label for="nextofkinphone">Next of Kin Phone Number:</label>
+                            <input onChange={handleChange('nextofkinphone')} value={nextofkinphone} type="phone" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Next of Kin Phone Number" required/>
+                        </div>
+                  </div>
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                            <label for="nextofkinrelationship">Relationship with Next of Kin:</label>
+                            <input onChange={handleChange('nextofkinrelationship')} value={nextofkinrelationship} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Relationship With Next of Kin" required/>
+                        </div>
+                  </div>
+                  <div className="input-field col-sm-6 col-lg-4">
+                        <div className="form-group">
+                            <label for="nin">NIN:</label>
+                            <input onChange={handleChange('nin')} value={nin} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter NIN" required/>
+                        </div>
+                  </div>
+                 
                   <div className="input-field col-sm-6 col-lg-4">
                         <div className="form-group">
                         <label for="branch">Branch:</label>
@@ -200,6 +273,7 @@ const Addemployee =()=>{
                                 <option value="digitalmarketting">Digital Marketting</option>
                                 <option value="devfinance">Development Finance</option>
                                 <option value="fco">Finance</option>
+                                <option value="none">NONE</option>
                             </select>
                         </div>
                   </div>
@@ -217,20 +291,19 @@ const Addemployee =()=>{
                         <label for="linemanager">Unit Head:</label>
                             <select onChange={handleChange('linemanager')} class="form-control" id="linemanager" required>
                             <option>Please Select</option>
-                                <option value="icthead">HEAD ICT</option>
-                                <option value="loadhead">HEAD LOAN MONITORING</option>
-                                <option value="credithead">HEAD CREDIT</option>
-                                <option value="recoveryhead">HEAD LOAN RECOVERY</option>
-                                <option value="internalcontrolhead">HEAD INTERNAL CONTROL</option>
-                                <option value="operationhead">HEAD OPERATION</option>
-                                <option value="digitalmarkettinghead">DIGITAL MARKETTING</option>
-                                <option value="cmo">CHIEF MARKETTING OFFICER</option>
-                                <option value="cfo">CHIEF FINANCIAL OFFICER</option>
-                                <option value="headpayroll">PAYROLL MANAGER</option>
-                                <option value="headmarketajesa">MARKETTING MANAGER(Ajesa)</option>
-                                <option value="headmarketademola">MARKETTING MANAGER(Ademola)</option>
-                                <option value="none">NONE</option>
+                            <option value="none">NONE</option>
+                            {displaylinemanagers.map((c, i) => (<option key={i} value={c.staffregnumber}>
+                            {c.designation}
+                            </option>))}
+                           
                             </select>
+                        </div>
+                  </div>
+                  <div className="input-field col-sm-12 col-lg-12">
+                        <div className="form-group">
+                            <label for="address">Address:</label>
+                            <textarea  style={{width: "100%", height:"10vh" }} onChange={handleChange('address')} value={address} required></textarea>
+                            
                         </div>
                   </div>
                   
@@ -240,12 +313,14 @@ const Addemployee =()=>{
             </form>
     );
 return(
+    
     <Layouttwo>
+     
         <div class="main__container">
                 <div class="main__title">
                     <img src="assets/banner.jpg" alt=""/>
                     <div class="main__greeting">
-                        <h1>MUTUAL TRUST MICROFINANCE BANK(ADD EMPLOYEES)</h1>
+                        <h1>MFB MICROFINANCE BANK(ADD EMPLOYEES)</h1>
                         <p>Welcome to your admin</p>
                     </div>
                 </div>

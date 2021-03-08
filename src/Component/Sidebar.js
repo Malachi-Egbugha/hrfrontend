@@ -42,7 +42,8 @@ return(
 
 <h2>ACCOUNT</h2>
 <div className={isActive(history, '/hrsystem/profile')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-archive"></i>
+<i class="fas fa-angry"></i>
+   
     <Link to="/hrsystem/profile">Profile</Link>
 </div>
 
@@ -51,33 +52,33 @@ return(
     <Link to="/hrsystem/manageemployee">Manage Employee</Link>
 </div>
 <div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/addemployee')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-handshake-o"></i>
+<i class="fas fa-archive"></i>
     <Link to="/hrsystem/addemployee">Add Employee</Link>
 </div>
 
 
 <h2>LEAVE MANAGEMENT</h2>
 <div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/leaveapplications')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
+<i class="fas fa-business-time"></i>
     <Link to="/hrsystem/leaveapplications">Manage Leave Applications</Link>
     </div>
     <div className={isActive(history, '/hrsystem/leaveapply')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
+    <i class="fas fa-edit"></i>
     <Link to="/hrsystem/leaveapply">Apply for Leave</Link>
     </div>
     <div style={isUnitHead() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/lineapply')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
-    <Link to="/hrsystem/lineapply">Manage Leave Applications</Link>
+    <i class="fas fa-address-card"></i>
+    <Link to="/hrsystem/lineapply">Manage Leave</Link>
     </div>
     <div style={isHr() ? {display: 'block'} : {display: 'none'}} className={isActive(history, '/hrsystem/checkresult')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-    <i className="fa fa-money"></i>
+    <i class="fas fa-fax"></i>
     <Link to="#">Leave Report</Link>
     </div>
 
 
 <h2>PERFORMANCE MANAGEMENT</h2>
     <div className={isActive(history, '/hrsystem/appraisal')? 'sidebar__link active_menu_link' : 'sidebar__link' }>
-        <i className="fa fa-money"></i>
+    <i class="fas fa-archway"></i>
         <Link to="/hrsystem/appraisal">Appraisal</Link>
     </div>
 

@@ -107,6 +107,8 @@ main {
 }
 .main__container {
   padding: 20px 50px;
+  margin-left: 0px;
+  font-size: 0.8rem;
 }
 .main__title {
   display: flex;
@@ -118,14 +120,17 @@ main {
   margin-right: 20px;
 }
 .main__title > h1 {
-  font-size: 20px;
+  font-size: 0.9rem;
   color: #2e4a66;
   margin-bottom: 5px;
 }
 .main__greeting > p {
-  font-size: 12px;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #a5aaad;
+}
+.main__greeting > h1 {
+  font-size: 1.3rem;
 }
 .main__cards {
   border: 10px solid #000000;
@@ -212,7 +217,10 @@ main {
   text-align: center;
   padding: 25px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 0.8rem;
+}
+.charts h1 {
+  font-size: 0.8rem;
 }
 .card2 {
   background: #d2f9ee;
@@ -272,7 +280,7 @@ main {
 }
 .sidebar__menu > h2 {
   color: #3ea175;
-  font-size: 16px;
+  font-size: 0.9rem;
   margin-top: 15px;
   margin-bottom: 5px;
   padding: 0 10px;
@@ -283,6 +291,7 @@ main {
   padding: 10px;
   border-radius: 3px;
   margin-bottom: 5px;
+  font-size: 0.7rem;
 }
 .active_menu_link {
   background: rgb(62, 161, 117, 0.3);

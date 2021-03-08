@@ -14,7 +14,7 @@ export const isHr = () =>{
 //check is user is a unit head
 export const isUnitHead = () =>{
   let {user} = JSON.parse(localStorage.getItem('usersign'));
-  let activate = (user.designation == 'unithead') ? true : false;
+  let activate = (user.group == 'unithead') ? true : false;
   return activate;
 
 };
@@ -73,7 +73,7 @@ export const unitheadAuthenticated = () =>{
   {
     
     let {user} = JSON.parse(localStorage.getItem('usersign'));
-    if(user.designation == 'unithead')
+    if(user.group == 'unithead')
     {
       return JSON.parse(localStorage.getItem('usersign'))
 

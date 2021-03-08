@@ -42,7 +42,7 @@ const Leaveapplications =()=>{
                 <div className="main__title">
                     <img src="assets/banner.jpg" alt=""/>
                     <div className="main__greeting">
-                        <h1>MUTUAL TRUST MICROFINANCE BANK(LEAVE MANAGEMENT)</h1>
+                        <h1>MUTUAL TRUST MFB(LEAVE MANAGEMENT)</h1>
                         <p>Welcome to your admin</p>
                     </div>
                 </div>
