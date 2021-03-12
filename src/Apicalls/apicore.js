@@ -23,6 +23,7 @@ catch(err)
 }
 
 };
+
 //signup leave
 export const leavesignup =async (leave) =>{
     
@@ -229,3 +230,26 @@ export const updateUser =async (id,update) => {
 
 
 
+//find a user
+export const finduser =async (id) =>{
+    const {token} =  JSON.parse(localStorage.getItem("usersign"));
+
+try{
+    let finduser = await fetch(`${USERAPI}/finduser/${id}`,{
+        method:"POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            "authorization" : `Bearer: ${token}`
+        }
+       
+    });
+        return finduser.json();
+}
+catch(err)
+{
+       console.log(err);
+
+}
+
+};

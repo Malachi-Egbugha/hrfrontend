@@ -1,10 +1,15 @@
-import React from 'react'
+import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
-const Displayusers = ({users, changeStatus}) => {
+const Displayusers = ({users, changeStatus,changeModalstate}) => {
     
  
     return (
-        <table  class="table table-striped">
+
+        <div>
+       
+        <table  className="table table-striped">
+        
         <thead>
             <tr>
             <th scope="col"></th>
@@ -20,6 +25,7 @@ const Displayusers = ({users, changeStatus}) => {
             <th scope="col">Branch</th>
             <th scope="col">Department</th>
             <th scope="col">DateJoin</th>
+            <th></th>
             <th scope="col">Status</th>
             </tr>
         </thead>
@@ -30,10 +36,10 @@ const Displayusers = ({users, changeStatus}) => {
    
    {
         users.map((u,i)=>(
-        <tr>
+        <tr key={i}>
         <td>{i + 1}</td>         
-        <td><button onClick={changeStatus} value={u._id} type="button" className={u.status == 'active' ? 'btn btn-success' : 'btn btn-danger'}>{u.status == 'active' ? 'Deactivate' : 'Activate'}</button></td>
-        <td><button onClick={changeStatus} value={u._id} type="button" className="btn btn-success" style={{backgroundColor: '#2A1372'}}><i class="fas fa-users-cog"></i></button></td>
+        <td><button data-tip data-for="updatestatus"  onClick={changeModalstate} value={u._id}  type="button" className="btn btn-success" style={{backgroundColor: '#2A1372'}}><i className="fas fa-users-cog" ></i></button></td>
+        <td><button data-tip data-for="changepassword" value={u._id}  type="button" className="btn btn-success" style={{backgroundColor: '#2A1372'}}><i class="fab fa-accessible-icon"></i></button></td>
         <td>{u.firstname}</td>
         <td>{u.lastname}</td>
         <td>{u.staffregnumber}</td>
@@ -44,7 +50,8 @@ const Displayusers = ({users, changeStatus}) => {
         <td>{u.branch}</td>
         <td>{u.department}</td>
         <td>{u.createdAt}</td>
-        <td style={{color: "#fff", backgroundColor: u.status == 'active'? '#2A1372' : '#D55451' }}>{u.status}</td>
+        <td><button onClick={changeStatus} value={u._id} type="button" className={u.status === 'active' ? 'btn btn-danger'  :'btn btn-success' }>{u.status === 'active' ? 'Deactivate' : 'Activate'}</button></td>
+        <td style={{color: "#fff", backgroundColor: u.status === 'active'? '#2A1372' : '#D55451' }}>{u.status}</td>
 
        
         
@@ -59,7 +66,18 @@ const Displayusers = ({users, changeStatus}) => {
 
             
             </tbody>
+            
         </table>
+        <ReactTooltip id="updatestatus">
+            <span>Update User Details</span>
+
+        </ReactTooltip>
+        <ReactTooltip id="changepassword">
+            <span>Change User Password</span>
+
+        </ReactTooltip>
+        </div>
+      
         
     )
 }
