@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
+import {format, parseISO} from 'date-fns';
 
 const Displayusers = ({users, changeStatus,changeModalstate}) => {
     
@@ -49,7 +50,7 @@ const Displayusers = ({users, changeStatus,changeModalstate}) => {
         <td>{u.linemanager}</td>
         <td>{u.branch}</td>
         <td>{u.department}</td>
-        <td>{u.createdAt}</td>
+        <td>{format(parseISO(u.createdAt), 'MM/dd/yyyy')}</td>
         <td><button onClick={changeStatus} value={u._id} type="button" className={u.status === 'active' ? 'btn btn-danger'  :'btn btn-success' }>{u.status === 'active' ? 'Deactivate' : 'Activate'}</button></td>
         <td style={{color: "#fff", backgroundColor: u.status === 'active'? '#2A1372' : '#D55451' }}>{u.status}</td>
 
@@ -70,12 +71,12 @@ const Displayusers = ({users, changeStatus,changeModalstate}) => {
         </table>
         <ReactTooltip id="updatestatus">
             <span>Update User Details</span>
-
         </ReactTooltip>
+
         <ReactTooltip id="changepassword">
             <span>Change User Password</span>
-
         </ReactTooltip>
+      
         </div>
       
         

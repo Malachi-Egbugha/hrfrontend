@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 const Signupusers = ({handleChange,clickSubmit,values, displaylinemanagers}) => {
     const {
        firstname,
@@ -10,6 +10,7 @@ const Signupusers = ({handleChange,clickSubmit,values, displaylinemanagers}) => 
        employeegrade,
        designation,
        linemanager,
+       datejoin,
        branch,
        phone,
        department,
@@ -146,7 +147,7 @@ const Signupusers = ({handleChange,clickSubmit,values, displaylinemanagers}) => 
                        
                    </div>
              </div>
-             <div className="input-field col-sm-6 col-lg-4">
+             <div className="input-field col-sm-6 col-lg-3">
                    <div className="form-group">
                    <label for="department">Department:</label>
                        <select onChange={handleChange('department')} class="form-control" id="department" required>
@@ -170,7 +171,7 @@ const Signupusers = ({handleChange,clickSubmit,values, displaylinemanagers}) => 
                    </div>
              </div>
             
-             <div className="input-field col-sm-6 col-lg-4">
+             <div className="input-field col-sm-6 col-lg-3">
                    <div className="form-group">
                        <label for="password">Password:</label>
                        <input onChange={handleChange('password')} value={password} type="text" className="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter Password" required/>
@@ -178,7 +179,7 @@ const Signupusers = ({handleChange,clickSubmit,values, displaylinemanagers}) => 
                    </div>
              </div>
 
-             <div className="input-field col-sm-6 col-lg-4">
+             <div className="input-field col-sm-6 col-lg-3">
                    <div className="form-group">
                    <label for="linemanager">Unit Head:</label>
                        <select onChange={handleChange('linemanager')} class="form-control" id="linemanager" required>
@@ -191,6 +192,15 @@ const Signupusers = ({handleChange,clickSubmit,values, displaylinemanagers}) => 
                        </select>
                    </div>
              </div>
+             
+             <div className="input-field col-sm-6 col-lg-3">
+                   <div className="form-group">
+                       <label for="phone">Date Join:</label>
+                       <input onChange={handleChange('datejoin')} value={datejoin} type="date" className="form-control" id="phone"   required/>
+                       
+                   </div>
+             </div>
+                 
              <div className="input-field col-sm-12 col-lg-12">
                    <div className="form-group">
                        <label for="address">Address:</label>
