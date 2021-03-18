@@ -1,21 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const Showsuccess = ({createUser}) => {
-
-    const showSuccess = () => createUser && (
-        <div className="alert alert-info">
+const Showsuccess = ({ createUser }) => {
+  const showSuccess = () =>
+    createUser && (
+      <div className="alert alert-info">
         <h2> {`${createUser}`}</h2>
-        </div>
+      </div>
+    );
 
-    )
-    
- 
-    return (
-        <div>
-       {showSuccess()}
-       </div>
-        
-        
-    )
-}
- export  default Showsuccess;
+  return <div>{showSuccess()}</div>;
+};
+export default Showsuccess;

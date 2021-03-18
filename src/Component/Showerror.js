@@ -1,22 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const Showerror = ({error}) => {
+const Showerror = ({ error }) => {
+  const showError = () => (
+    <div
+      className="alert alert-danger"
+      style={{ display: error ? "" : "none" }}
+    >
+      {error}
+    </div>
+  );
 
-    const showError = () =>  (
-        <div className="alert alert-danger" style={{display: error ? '': 'none'}}>
-             {error}
-          
-        </div>
-        );
- 
-    return (
-        <div>
-       {showError()}
-       </div>
-        
-        
-    )
-}
- export  default Showerror;
-
-
+  return <div>{showError()}</div>;
+};
+export default Showerror;

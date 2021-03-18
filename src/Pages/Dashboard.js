@@ -42,7 +42,6 @@ const Dashboard = () => {
               <div>
                 <h1>Reports</h1>
               </div>
-              
             </div>
             <div id="apex1"></div>
           </div>
@@ -51,7 +50,6 @@ const Dashboard = () => {
               <div>
                 <h1>Stats Reports</h1>
               </div>
-             
             </div>
             <div class="charts__right__cards">
               <div class="card1">
