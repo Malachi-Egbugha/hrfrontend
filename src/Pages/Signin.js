@@ -60,7 +60,12 @@ const Signin = () => {
           className="form-control"
         />
       </div>
-      <button onClick={clickSubmit} type="submit" className="btn btn-primary">
+      <button
+        onClick={clickSubmit}
+        type="submit"
+        className="btn btn-primary"
+        style={{ backgroundColor: "#080A22" }}
+      >
         Submit
       </button>
     </form>
@@ -94,7 +99,9 @@ const Signin = () => {
     <Layout className="outerdiv">
       <div className="loginbanner">
         <div className="card">
-          <div className="card-header">Login</div>
+          <div className="card-header" style={{ backgroundColor: "#080A22" }}>
+            Login
+          </div>
           <div className="card-body">
             {showLoading()}
             {showError()}
