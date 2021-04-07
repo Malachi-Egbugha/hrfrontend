@@ -9,6 +9,9 @@ import Leaveapplication from "./Pages/Leaveapplication";
 import Leaveapply from "./Pages/Leaveapply";
 import Lineleaveapply from "./Pages/Lineleaveapply";
 import Appraisalapply from "./Pages/Appraisalapply";
+import Applyexpenses from "./Pages/Applyexpenses";
+import Reportexpenses from "./Pages/Reportexpenses";
+import Attendance from "./Pages/Attendance";
 
 import {
   PrivateRoute,
@@ -46,6 +49,11 @@ const Routes = () => {
           exact
           component={Leaveapplication}
         />
+        <HrPrivateRoute
+          path="/hrsystem/attendance"
+          exact
+          component={Attendance}
+        />
         <PrivateRoute
           path="/hrsystem/leaveapply"
           exact
@@ -60,6 +68,16 @@ const Routes = () => {
           path="/hrsystem/appraisal"
           exact
           component={Appraisalapply}
+        />
+        <PrivateRoute
+          path="/hrsystem/expenseapply"
+          exact
+          component={Applyexpenses}
+        />
+        <PrivateRoute
+          path="/hrsystem/expensereport"
+          exact
+          component={Reportexpenses}
         />
       </Switch>
     </BrowserRouter>

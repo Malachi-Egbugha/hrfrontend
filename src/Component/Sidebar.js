@@ -134,6 +134,37 @@ const Sidebar = () => {
           <i className="fas fa-archway"></i>
           <Link to="/hrsystem/appraisal">Appraisal</Link>
         </div>
+        <div
+          className={
+            isActive(history, "/hrsystem/attendance")
+              ? "sidebar__link active_menu_link"
+              : "sidebar__link"
+          }
+        >
+          <i className="fas fa-address-book"></i>
+          <Link to="/hrsystem/attendance">Attendance</Link>
+        </div>
+        <h2>EXPENSE MANAGEMENT</h2>
+        <div
+          className={
+            isActive(history, "/hrsystem/expenseapply")
+              ? "sidebar__link active_menu_link"
+              : "sidebar__link"
+          }
+        >
+          <i className="fas fa-dolly"></i>
+          <Link to="/hrsystem/expenseapply">Expense</Link>
+        </div>
+        <div
+          className={
+            isActive(history, "/hrsystem/expensereport")
+              ? "sidebar__link active_menu_link"
+              : "sidebar__link"
+          }
+        >
+          <i className="fas fa-lightbulb"></i>
+          <Link to="/hrsystem/expensereport">Report</Link>
+        </div>
 
         <div className="sidebar__logout">
           <span

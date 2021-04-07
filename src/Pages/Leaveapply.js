@@ -77,16 +77,16 @@ const Leaveapply = () => {
   );
   return (
     <Layouttwo>
-      <div class="main__container">
-        <div class="main__title">
+      <div className="main__container">
+        <div className="main__title">
           <img src="assets/banner.jpg" alt="" />
-          <div class="main__greeting">
+          <div className="main__greeting">
             <h1>MUTUAL TRUST MFB(APPLY FOR LEAVE)</h1>
             <p>Welcome to your admin</p>
           </div>
         </div>
 
-        <hr class="container-fluid" />
+        <hr className="container-fluid" />
 
         <Leaveapplication load={loadDsiplayLeaves} />
         <hr />

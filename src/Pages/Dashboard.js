@@ -26,19 +26,19 @@ const Dashboard = () => {
   }, []);
   return (
     <Layouttwo>
-      <div class="main__container">
-        <div class="main__title">
+      <div className="main__container">
+        <div className="main__title">
           <img src="assets/banner.jpg" alt="" />
-          <div class="main__greeting">
+          <div className="main__greeting">
             <h1>MUTUAL TRUST MFB(DASHBOARD)</h1>
             <p>Welcome to your admin</p>
           </div>
         </div>
 
-        <hr class="main__cards" />
-        <div class="charts">
-          <div class="charts__left">
-            <div class="charts__left__title">
+        <hr className="main__cards" />
+        <div className="charts">
+          <div className="charts__left">
+            <div className="charts__left__title">
               <div>
                 <h1>Reports</h1>
               </div>

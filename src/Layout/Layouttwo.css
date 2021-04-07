@@ -363,6 +363,26 @@ main {
     display: none;
   }
 }
+@media print {
+  #sidebar {
+    display: none;
+  }
+  .main__cards {
+    display: none;
+  }
+  .navbar {
+    display: none;
+  }
+  .contain {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "nav nav nav nav"
+      "main main main main";
+  }
+}
 
 .displaynone {
   display: none;
